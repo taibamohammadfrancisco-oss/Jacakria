@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Motor Parts Shop - Items</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom right, #eaeaea, #bdbdbd);
+        color: #333;
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+        background: #111;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav .logo {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    nav .logo img {
+        height: 40px;
+        width: 40px;
+        object-fit: contain;
+        margin-right: 10px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #ff4444;
+    }
+
+    /* HEADER */
+    header {
+        text-align: center;
+        padding: 60px 20px;
+        font-size: 36px;
+        font-weight: bold;
+        background: url('images/background.jpg') center/cover no-repeat;
+        color: white;
+        text-shadow: 2px 2px 6px black;
+    }
+
+    /* SECTION */
+    .section {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    /* PRODUCT CARDS */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .product-card {
+        background: white;
+        width: 260px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: 0.3s;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .product-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    }
+
+    .product-name {
+        font-size: 20px;
+        margin: 10px 0;
+        font-weight: bold;
+    }
+
+    .product-description {
+        padding: 0 10px 15px 10px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    footer {
+        background: #111;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 40px;
+    }
+
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION BAR -->
+<nav>
+    <div class="logo">
+        <img src="images/logo.png" alt="Logo">
+        JACK'ZMotorParts
+    </div>
+    <ul>
+       <li><a href="home.html">Home</a></li>
+       <li><a href="items.html">Items</a></li>
+       <li><a href="gallery.html">Gallery</a></li>
+       <li><a href="aboutus.html">About Us</a></li>
+       <li><a href="contact.html">Contact Us</a></li>
+       <li><a href="logout.html">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- HEADER -->
+<header>
+    Our Motorcycle Parts
+</header>
+
+<!-- ITEMS SECTION -->
+<div class="section" id="items">
+    <h2>All Products</h2>
+    <div class="container" id="product-container">
+        <!-- Products will be injected here by JavaScript -->
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2025 Motor Parts Shop. All Rights Reserved.
+</footer>
+
+<script>
+    // PRODUCT LIST
+    const products = [
+        { name: "Motorcycle Engine", image: "images/oil1.webp", description: "High-performance engine compatible with various models." },
+        { name: "Racing Helmet", image: "images/racing.jpg", description: "Strong and comfortable helmet for extra safety." },
+        { name: "Disc Brake Set", image: "images/brake.webp", description: "Durable and reliable braking system for all weather conditions." },
+        { name: "Spark Plug", image: "images/plug.png", description: "High-efficiency spark plug for improved engine power." },
+        { name: "Motor Oil Premium", image: "images/prim.jpg", description: "High-quality engine oil for smoother performance." },
+        { name: "Side Mirror Set", image: "images/mirror.jpg", description: "Durable and stylish motorcycle side mirrors." },
+        { name: "Motorcycle Chain", image: "images/chain.jpg", description: "Heavy-duty chain for long-lasting road use." },
+        { name: "Air Filter", image: "images/air.webp", description: "Improves airflow and engine efficiency." },
+        { name: "LED Headlight", image: "images/led.jpg", description: "Ultra-bright LED headlight for night rides." },
+        { name: "Motorcycle Battery", image: "images/battery.webp", description: "Reliable long-life battery for all motorcycle types." },
+        { name: "Brake Pads", image: "images/pads.webp", description: "High-quality brake pads for safe stopping power." },
+        { name: "Motorcycle Tires", image: "images/tires.webp", description: "Strong grip tires suitable for all terrains." }
+    ];
+
+    // FUNCTION TO CREATE PRODUCT CARD
+    function createProductCard(product) {
+        return `
+            <div class="product-card">
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-name">${product.name}</div>
+                <div class="product-description">${product.description}</div>
+            </div>
+        `;
+    }
+
+    // FUNCTION TO DISPLAY PRODUCTS
+    function displayProducts() {
+        const container = document.getElementById("product-container");
+        container.innerHTML = "";
+        products.forEach(product => {
+            container.innerHTML += createProductCard(product);
+        });
+    }
+
+    // Load products on page open
+    displayProducts();
+</script>
+
+</body>
+</html>

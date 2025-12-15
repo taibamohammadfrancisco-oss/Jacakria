@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style type="text/css">
+        body {
+            font-family: Verdana, sans-serif;
+            background-image: url('images/ground.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #table {
+           background-image: url('images/ground.jpg');
+            border: 2px solid gray;
+            border-radius: 25px;
+           
+            margin: 70px auto;
+            padding: 30px;
+            width: 25%;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 85%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border-radius: 10px;
+            background-color: gray;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: black;
+        }
+
+        th {
+            font-size: 18px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="loginForm">
+        <table id="table" align="center" border="0" cellspacing="1">
+            <tr>
+                <td align="center">
+                    <img src="images/logo.png" width="110px" alt="flow">
+                </td>
+            </tr>
+            <tr>
+                <th>JACK'ZMOTOR PARTS</th>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="text" id="username" placeholder="Username" required>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="password" id="password" placeholder="Password" required>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <button type="submit">LOGIN</button>
+                    <button type="button" onclick="window.location.href='registration.html';">SIGN-UP</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+<script>
+// LOGIN FUNCTION (MATCHES REGISTERED USER FROM localStorage)
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    // Retrieve stored user
+    let storedUser = localStorage.getItem("userData");
+
+    if (!storedUser) {
+        alert("No registered account found! Please sign up first.");
+        return;
+    }
+
+    let user = JSON.parse(storedUser);
+
+    // Check login match
+    if (username === user.username && password === user.password) {
+        alert("Login Successful!");
+        window.location.href = "home.html";  // Redirect
+    } else {
+        alert("Incorrect Username or Password!");
+    }
+});
+</script>
+
+</body>
+</html>
